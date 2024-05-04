@@ -1,0 +1,9 @@
+[submodule "pl-backend"]
+	path = pl-backend
+	url = https://github.com/SebiCreator/pl-backend.git
+[submodule "pl-frontend"]
+	path = pl-frontend
+	url = https://github.com/SebiCreator/pl-frontend.git
+[submodule "pl-extension"]
+	path = pl-extension
+	url = https://github.com/SebiCreator/pl-extension.git
