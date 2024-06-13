@@ -7,8 +7,6 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
-    networks:
-      - app-network
     depends_on:
       - mongodb
 
@@ -18,8 +16,6 @@ services:
       - "8080:8080"
     depends_on:
       - pl-backend
-    networks:
-      - app-network
 
   mongodb:
     image: mongo
@@ -30,12 +26,8 @@ services:
       - "27017:27017"
     volumes:
       - mongodb-data:/data/db
-    networks:
-      - app-network
 
-networks:
-  app-network:
-    driver: bridge
+
 
 volumes:
   mongodb-data:
