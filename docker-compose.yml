@@ -1,33 +1,32 @@
 version: '3.8'
 
 services:
-  pl-backend:
+  backend:
     build: ./pl-backend
     ports:
-      - "3000:3000"
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
     environment:
       NODE_ENV: production
+      MONGO_DB_URI: mongodb://mongodb:${MONGO_PORT}/pl
     depends_on:
       - mongodb
 
-  pl-frontend:
+  frontend:
     build: ./pl-frontend
     ports:
-      - "8080:8080"
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     depends_on:
-      - pl-backend
+      - backend
 
   mongodb:
     image: mongo
     restart: always
     expose:
-      - "27017"
+      - "${MONGO_PORT}"
     ports:
-      - "27017:27017"
+      - "${MONGO_PORT}:${MONGO_PORT}"
     volumes:
       - mongodb-data:/data/db
-
-
 
 volumes:
   mongodb-data:
